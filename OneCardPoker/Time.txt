@@ -1,0 +1,13 @@
+Date Mar.5
+Iteration: 5M
+
+
+Single thread: time cost 13.5s
+parfor: 11.35s
+
+
+
+Increase Iteration to 15M:
+single:41s
+parfor:34.6s
+
