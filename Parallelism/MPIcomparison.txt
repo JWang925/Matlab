@@ -1,0 +1,24 @@
+Date Mar.5
+Iteration: 5M
+
+
+Single thread: time cost 13.5s
+parfor: 11.35s
+
+
+
+Increase Iteration to 15M:
+single:41s
+parfor:34.6s
+
+
+Parfor.m:
+data size=800M
+for=9.5s
+parfor=4.8s
+
+From readings, it seems that the slow PCI-E bus speed between GPU and memory can lead to bottleneck.
+
+
+
+
