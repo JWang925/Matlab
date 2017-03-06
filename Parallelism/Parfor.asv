@@ -10,7 +10,7 @@ A=zeros(size,1);
 %   A(i) = sin(i*2*pi/size);
 % end
 % toc
-% % 
+% 
 % % 2.9 sec
 % A=zeros(size,1);
 % tic
@@ -28,8 +28,6 @@ A=zeros(size,1);
 
 
 % Study of why the memory usage is 763m instead of ~400m
-% Conclusion: matlab CUDA has a weird memory management system; wait(d)
-% would release some memory when the memory usage is on the high side.
 
 % %GPU Memory usage=440-59=381m, time = 0.32s so garray is same size of A
 % tic
@@ -111,16 +109,14 @@ A=zeros(size,1);
 % A=gather(garray);
 % toc
 
-%GPU Memory usage=822-59=763m, time = 0.55s:
-% tic
-% for(i=0:5)
-% d=gpuDevice();
-% garray=gpuArray(1:size); 
-% garray=garray * 2;
-% wait(d);
-% d.FreeMemory
-% end
-% toc
+%GPU Memory usage=440-59=381m, time = 0.53s: so copying array changes
+%nothing..
+tic
+garray=gpuArray(1:size); 
+garray2=garray;
+garray3=sin(garray);  
+A=gather(garray);
+toc
 
 
 % Extra tests
